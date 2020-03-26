@@ -8,7 +8,7 @@ git clone git@github.com:nikerzetic/OPB-projektna-naloga.git
 ```
 V mapi s projektom ustvari virtualno okolje in ga zaženi.
 ```
-python3 -m venv venv3
+python3 -m venv ve
 venv3/bin/activate
 ```
 Namesti ustrezne pakete.
