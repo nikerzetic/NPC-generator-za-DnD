@@ -1,5 +1,4 @@
-# Urbarium
-### NPC generator za DnD
+# Urbarium - NPC generator za DnD
 Projekt pri predmetu Osnove podatkovnih baz.
 
 ## Namestitev
@@ -16,6 +15,9 @@ Namesti ustrezne pakete.
 ```
 pip install -r requirements.txt
 ```
+
+## ER diagram
+![alt text](https://github.com/nikerzetic/NPC-generator-za-DnD/blob/master/DnD-baza-sveta.png "ER diagram")
 
 ## Orodja in zunanje povezave
 ER diagram: https://www.lucidchart.com/documents/edit/643bdfb1-d0f7-4ca5-8613-21649b9e46a5/0_0
