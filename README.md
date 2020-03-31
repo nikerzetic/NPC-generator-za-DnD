@@ -6,10 +6,15 @@ Z GitHuba kopiraj repozitorij.
 ```
 git clone git@github.com:nikerzetic/OPB-projektna-naloga.git
 ```
-V mapi s projektom ustvari virtualno okolje in ga zaženi.
+V mapi s projektom ustvari virtualno okolje in ga zaženi. Na Windows se to storite tako:
+```
+python -m venv ve
+.\ve\Scripts\activate
+```
+na boljših sistemih pa načeloma tako:
 ```
 python3 -m venv ve
-venv3/bin/activate
+ve/bin/activate.bat
 ```
 Namesti ustrezne pakete.
 ```
