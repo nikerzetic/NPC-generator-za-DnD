@@ -32,6 +32,8 @@ ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'generators.apps.GeneratorsConfig',
+    'character.apps.CharacterConfig',
+    'settlement.apps.SettlementConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
