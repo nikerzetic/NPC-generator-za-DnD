@@ -4,16 +4,10 @@ from . import views
 
 
 urlpatterns = [
-    path('', views.homepage, name='homepage'),
-    # path('character/', views.CharacterIndexView.as_view(), name='character-index'), 
-    # path('character/<int:pk>/', views.CharacterDetailView.as_view(), name='character-detail'), 
-    # path('character/<int:pk>/edit/', views.character_edit, name='character-edit'), 
-    # path('character/<int:pk>/save/', views.character_save, name='character-save'), 
-    # path('character/generator/', views.character_generator, name='character-generator'), 
-    # path('settlement/', views.SettlementIndexView.as_view(), name='settlement-index'), 
-    # path('settlement/<int:pk>/', views.SettlementDetailView.as_view(), name='settlement-detail'), 
-    # path('settlement/<int:pk>/edit/', views.settlement_edit, name='settlement-edit'), 
-    # path('settlement/<int:pk>/save/', views.settlement_save, name='settlement-save'), 
+    # path('/', views.IndexView.as_view(), name='index'), 
+    # path('/<int:pk>/', views.DetailView.as_view(), name='detail'), 
+    # path('/<int:pk>/edit/', views.edit, name='edit'), 
+    # path('/<int:pk>/save/', views.save, name='save'), 
     # path('political-formation/', views.PoliticalFormationIndexView.as_view(), name='political-formation-index'), 
     # path('political-formation/<int:pk>/', views.PoliticalFormationDetailView.as_view(), name='political-formation-detail'), 
     # path('political-formation/<int:pk>/edit/', views.political_formation_edit, name='political-formation-edit'), 
