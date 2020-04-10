@@ -9,7 +9,7 @@ class IndexView(generic.ListView):
     template_name = 'settlementType/index.html'
 
     def get_queryset(self):
-        return Category.objects.all()
+        return Category.objects.order_by('id')
 
 
 class DetailView(generic.DetailView):

@@ -1,21 +1,21 @@
-<!DOCTYPE html>
+{% extends "settlement/base.html" %}
 
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>Urbarium - Settlement Details</title>
-    </head>
+{% block title%}
+    Urbarium - Settlement Details
+{% endblock title%}
 
-    <body>
-        <h1>{{ settlement.name }}</h1>
+{% block pagecontent %}   
+    <h1>{{ settlement.name }}</h1>
 
-        {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+    {% if error_message %}
+        <p><strong>{{ error_message }}</strong></p>
+    {% endif %}
 
-        <p>This is {{ settlement.name }}</p>
+    <p>This is {{ settlement.name }}</p>
 
-        <form action="" method="post">
-        {% csrf_token %}
-        <input type="submit" value="Edit">
-        </form>
-    </body>
-</html>
+    <form action="" method="post">
+    {% csrf_token %}
+    <input type="submit" value="Edit">
+    </form>
+{% endblock pagecontent %}
+
