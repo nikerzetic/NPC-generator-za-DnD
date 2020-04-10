@@ -6,5 +6,8 @@ class Category(models.Model):
     lowerLimit = models.IntegerField()
     upperLimit = models.IntegerField()
 
+    def difference(self):
+        return self.upperLimit - self.lowerLimit
+
     def __str__(self):
         return self.category

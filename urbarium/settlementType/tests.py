@@ -4,6 +4,8 @@ from random import seed
 from random import randint
 
 # Nekaj sem ekperimentrial (ne zmeni se na to)
+
+
 class SettlementTypeModelTests(TestCase):
 
     def test_upper_limit_bigger_than_lower_limmit(self):
@@ -12,11 +14,10 @@ class SettlementTypeModelTests(TestCase):
         upperlimit = randint(0, 100000)
         category = Category(lowerLimit=upperlimit + 1000, upperLimit=upperlimit)
 
-        def difference_positive(upperlim, lowerlim):
+        def difference_positive():
             boolean = True
-            if (upperlim - lowerlim) < 0:
+            if category.difference() < 0:
                 boolean = False
-
             return boolean
 
-        self.assertIs(difference_positive(category.upperLimit, category.lowerLimit), False)
+        self.assertIs(difference_positive(), False)
