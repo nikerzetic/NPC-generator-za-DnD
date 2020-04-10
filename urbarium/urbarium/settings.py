@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'character.apps.CharacterConfig',
     'settlement.apps.SettlementConfig',
+    'settlementType.apps.SettlementtypeConfig',
 ]
 
 MIDDLEWARE = [

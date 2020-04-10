@@ -3,15 +3,15 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Urbarium - Settlement Details</title>
+        <title>Urbarium - SettlementType Details</title>
     </head>
 
     <body>
-        <h1>{{ settlement.name }}</h1>
+        <h1>{{ settlement.category }}</h1>
 
         {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
-        <p>This is {{ settlement.name }}</p>
+        <p>This is a/an {{ settlement.category }}</p>
 
         <form action="" method="post">
         {% csrf_token %}
