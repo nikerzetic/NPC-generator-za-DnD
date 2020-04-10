@@ -6,14 +6,12 @@
     </head>
 
     <body>
-    {% if latest_question_list %}
         <ul>
-        {% for question in latest_question_list %}
-            <li><a href="{% url 'character:detail' character.id %}">{{ character.name }}{{ character.surname }}</a></li>
+        {% for npc in character_list %}
+            <li><a href="{% url 'character:detail' npc.id %}">{{ npc.name }} {{ npc.surname }}</a></li>
+        {% empty %}
+            <li>There are no characters.</li>
         {% endfor %}
         </ul>
-    {% else %}
-        <p>There are no characters.</p>
-    {% endif %}
     </body>
 </html>
