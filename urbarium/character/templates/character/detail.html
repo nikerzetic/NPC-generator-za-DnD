@@ -1,14 +1,13 @@
 {% extends 'urbarium/base.html' %}
 
+{% block title %}Character Details | {% endblock title %}
+
 {% block content %}
 <h1>{{ character.name }} {{ character.surname }}</h1>
 
-        {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-
         <p>This is {{ character.name }} {{ character.surname }}</p>
 
-        <form action="" method="post">
-        {% csrf_token %}
+        <form action="" method="post">{% csrf_token %}
         <input type="submit" value="Edit">
         </form>
 {% endblock content %}
