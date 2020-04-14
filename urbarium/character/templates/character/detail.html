@@ -1,21 +1,13 @@
-<!DOCTYPE html>
+{% extends 'urbarium/base.html' %}
 
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>Urbarium - Character Details</title>
-    </head>
+{% block title %}Character Details | {% endblock title %}
 
-    <body>
-        <h1>{{ character.name }} {{ character.surname }}</h1>
-
-        {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+{% block content %}
+<h1>{{ character.name }} {{ character.surname }}</h1>
 
         <p>This is {{ character.name }} {{ character.surname }}</p>
 
-        <form action="" method="post">
-        {% csrf_token %}
+        <form action="" method="post">{% csrf_token %}
         <input type="submit" value="Edit">
         </form>
-    </body>
-</html>
+{% endblock content %}
