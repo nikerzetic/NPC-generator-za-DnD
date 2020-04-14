@@ -1,17 +1,11 @@
-<!DOCTYPE html> 
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>Urbarium - Characters</title>
-    </head>
+{% extends 'urbarium/base.html' %}
 
-    <body>
-        <ul>
-        {% for npc in character_list %}
-            <li><a href="{% url 'character:detail' npc.id %}">{{ npc.name }} {{ npc.surname }}</a></li>
-        {% empty %}
-            <li>There are no characters.</li>
-        {% endfor %}
-        </ul>
-    </body>
-</html>
+{% block content %}
+    <ul>
+    {% for npc in character_list %}
+        <li><a href="{% url 'character:detail' npc.id %}">{{ npc.name }} {{ npc.surname }}</a></li>
+    {% empty %}
+        <li>There are no characters.</li>
+    {% endfor %}
+    </ul>
+{% endblock content %}
