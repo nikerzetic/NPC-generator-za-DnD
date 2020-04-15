@@ -1,10 +1,8 @@
-{% extends "settlement/base.html" %}
+{% extends 'urbarium/base.html' %}
 
-{% block title%}
-    Urbarium - Settlement Details
-{% endblock title%}
+{% block title%}Settlement Details | {% endblock title%}
 
-{% block pagecontent %}   
+{% block content %}   
     <h1>{{ settlement.name }}</h1>
 
     {% if error_message %}
@@ -13,9 +11,8 @@
 
     <p>This is {{ settlement.name }}</p>
 
-    <form action="" method="post">
-    {% csrf_token %}
+    <form action="" method="post">{% csrf_token %}
     <input type="submit" value="Edit">
     </form>
-{% endblock pagecontent %}
+{% endblock content %}
 
