@@ -18,8 +18,38 @@
     </head>
 
     <body>
-
-        {% block content %}{% endblock content %}
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">Urbarium</a>
+            <!-- <a class="nav-item nav-link" href="#">Characters</a>
+            <a class="nav-item nav-link" href="#">Settlements</a> -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                    <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="#">Characters</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="#">Settlements</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Political Formation</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Governing Body</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="#">Title</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        
+        <div class="container-fluid">{% block content %}{% endblock content %}</div>
 
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
