@@ -4,13 +4,12 @@ from django.views import generic
 
 from .models import Settlement
 
-# Create your views here.
-
 
 class IndexView(generic.ListView):
     template_name = 'settlement/index.html'
+
     def get_queryset(self):
-        return Settlement.objects
+        return Settlement.objects.order_by('id')
 
 
 class DetailView(generic.DetailView):
