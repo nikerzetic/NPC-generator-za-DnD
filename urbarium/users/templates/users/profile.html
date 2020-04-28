@@ -1,0 +1,14 @@
+{% extends 'urbarium/base.html' %}
+
+{% block title%}Profile | {% endblock title%}
+
+{% block content %}
+    <div class="content-section">
+        <div class="media">
+          <div class="media-body">
+            <h2 class="account-heading">{{ user.username }}</h2>
+            <p class="text-secondary">{{ user.email }}</p>
+          </div>
+        </div>
+    </div>
+{% endblock content %}
