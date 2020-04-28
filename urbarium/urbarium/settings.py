@@ -39,6 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'character.apps.CharacterConfig',
     'settlement.apps.SettlementConfig',
+    'political_formation.apps.PoliticalFormationConfig',
+    'governing_body.apps.GoverningBodyConfig',
+    'title.apps.TitleConfig',
 ]
 
 MIDDLEWARE = [
