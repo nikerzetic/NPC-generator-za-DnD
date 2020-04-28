@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'political_formation.apps.PoliticalFormationConfig',
     'governing_body.apps.GoverningBodyConfig',
     'title.apps.TitleConfig',
+    'users.apps.UsersConfig',
 ]
 
 MIDDLEWARE = [

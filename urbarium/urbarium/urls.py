@@ -22,5 +22,6 @@ urlpatterns = [
     path('political-formation/', include('political_formation.urls')),
     path('governing-body/', include('governing_body.urls')),
     path('title/', include('title.urls')),
+    path('register/', include('users.urls')),
     path('admin/', admin.site.urls),
 ]
