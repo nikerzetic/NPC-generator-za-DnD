@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'political_formation.apps.PoliticalFormationConfig',
     'governing_body.apps.GoverningBodyConfig',
     'title.apps.TitleConfig',
+    'users.apps.UsersConfig',
 ]
 
 MIDDLEWARE = [
@@ -124,3 +125,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
+
+# potem ko bova naredila homepage, tukaj samo spremeniš
+# ko se prijaviš v svoj acc te bo vrglo na to stran:
+LOGIN_REDIRECT_URL = 'character:index'
+# login route (uses it instead of accounts/login/?next=/users/profile/)
+LOGIN_URL = 'login'
