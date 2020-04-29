@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('character/', include('character.urls')),
@@ -22,5 +23,11 @@ urlpatterns = [
     path('political-formation/', include('political_formation.urls')),
     path('governing-body/', include('governing_body.urls')),
     path('title/', include('title.urls')),
+    path('users/', include('users.urls')),
+    
+    # inbuilt views from django
+    path('login/', auth_views.LoginView.as_view(template_name='users/login.html'), name='login'),
+    path('logout/', auth_views.LogoutView.as_view(template_name='users/logout.html'), name='logout'),
+
     path('admin/', admin.site.urls),
 ]
