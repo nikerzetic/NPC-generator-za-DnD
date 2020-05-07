@@ -67,7 +67,7 @@
         
         <!-- Content -->
         <div id="main">
-            <div class="container-fluid my-4">
+            <div class="container bg-light">
                 {% if messages %}
                     {% for message in messages %}
                     <!-- django and bootstrap have the same message tags, 
@@ -79,11 +79,10 @@
                 {% endif %}
 
                 <div class="row justify-content-md-center">
-                    <div class="col col-lg-8 col-xl-6">
+                    <div class="col">
                         {% block content %}{% endblock content %}
                     </div>
                 </div>
-
             </div>
         </div>        
 
