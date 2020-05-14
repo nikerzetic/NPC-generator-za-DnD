@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'governing_body.apps.GoverningBodyConfig',
     'title.apps.TitleConfig',
     'users.apps.UsersConfig',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -131,3 +132,5 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
 LOGIN_REDIRECT_URL = 'character:index'
 # login route (uses it instead of accounts/login/?next=/users/profile/)
 LOGIN_URL = 'login'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
