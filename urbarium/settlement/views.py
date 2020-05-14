@@ -17,8 +17,11 @@ class DetailView(generic.DetailView):
     template_name = 'settlement/detail.html'
 
 
-def edit(request):
-    return HttpResponse("edit")
+class EditView(generic.UpdateView):
+    model = Settlement
+    template_name = 'settlement/edit.html'
+    fields = ['name', 'population', 'category',
+             'location', 'know_for', 'economy']
 
 
 def save(request):
