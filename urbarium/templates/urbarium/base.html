@@ -20,49 +20,7 @@
     <body>
         <!-- Navigation Bar -->
         <div id="top">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="#">Urbarium</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                        <div class="navbar-nav mr-auto">
-                            <ul class="navbar-nav">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="???">Home</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{% url 'character:index' %}">Characters</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{% url 'settlement:index' %}">Settlements</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{% url 'political_formation:index' %}">Political Formation</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{% url 'governing_body:index' %}">Governing Body</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{% url 'title:index' %}">Title</a>
-                                </li>
-                            </ul>
-                    </div>
-                    <!-- Navbar Right -->
-                    <div class="navbar-nav">
-                        {% if user.is_authenticated %}
-                        <!-- User is logged-in -->
-                        <a class="nav-item nav-link" href="{% url 'users:profile' %}">Profile</a>
-                        <a class="nav-item nav-link" href="{% url 'logout' %}">Logut</a>
-                        {% else %}
-                        <!-- User is not logged-in -->
-                        <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
-                        <a class="nav-item nav-link" href="{% url 'users:register' %}">Register</a>  
-                        {% endif %}
-                            
-                    </div>
-                </div>
-            </nav>
+            {% include 'urbarium/navbar.html' %}
         </div>
         
         <!-- Content -->
@@ -78,8 +36,8 @@
                     {% endfor %}
                 {% endif %}
 
-                <div class="row justify-content-md-center">
-                    <div class="col">
+                <div class="row-fluid justify-content-md-center">
+                    <div id="col2" class="col">
                         {% block content %}{% endblock content %}
                     </div>
                 </div>
@@ -87,7 +45,9 @@
         </div>        
 
         <!-- Footer -->
-        <div id="foot"></div>
+        <div id="foot">
+            {% include 'urbarium/footer.html' %}
+        </div>
 
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
