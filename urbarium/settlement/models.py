@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 class SettlementType(models.Model):
@@ -28,10 +29,10 @@ class KnownFor(models.Model):
 
 
 class Economy(models.Model):
-    economyTpye = models.CharField(max_length=20)
+    description = models.CharField(max_length=100)
 
     def __str__(self):
-        return self.economyType
+        return self.description
 
 
 class Settlement(models.Model):
@@ -45,3 +46,6 @@ class Settlement(models.Model):
 
     def __str__(self):
         return self.name
+    
+    def get_absolute_url(self):
+        return reverse('settlement:edit', kwargs={'pk': self.pk})

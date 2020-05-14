@@ -7,7 +7,7 @@ from .models import Settlement
 
 class IndexView(generic.ListView):
     template_name = 'settlement/index.html'
-
+    context_object_name = 'settlement_list'
     def get_queryset(self):
         return Settlement.objects.order_by('id')
 

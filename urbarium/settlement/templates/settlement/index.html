@@ -1,15 +1,56 @@
 {% extends 'urbarium/base.html' %}
 
-{% block title%}Settlements | {% endblock title%}
+{% block title %}Settlements | {% endblock title %}
 
+{% block content %}
+    <!-- Card Style -->
+    <!-- <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4">
+        {% for character in character_list %}
+        <div class="col my-4">
+            <div class="card">
+                <div class="card-header">{{ character.name }} {{ character.surname }}</div>
+                <div class="card-body">{{ character.race }}, {{ character.gender }}, {{ character.age }}</div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col my-4">
+            <div class="card text-white bg-danger">
+                <div class="card-header">Error</div>
+                <div class="card-body">There are no characters.</div>
+            </div>
+        </div>
+        {% endfor %}
+    </div> -->
 
-{% block content %}   
-<div class="content-section">
-    <div class="media">
-      <div class="media-body">
-        <h2 class="account-heading">{{ settlement.name }}</h2>
-      </div>
-    </div>
-    
-  </div>
+    <!-- Table Style -->
+    <table class="table table-hover table-light">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col"></th>
+                <th scope="col">Name</th>
+                <th scope="col">Population</th>
+                <th scope="col">Category</th>
+                <th scope="col">Location</th>
+                <th scope="col">Economy</th>
+                <th scope="col">Known For</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for settlement in settlement_list %}
+            <tr>
+                <td><a href="{% url 'settlement:detail' settlement.id %}"><svg class="bi bi-box-arrow-in-right" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M8.146 11.354a.5.5 0 010-.708L10.793 8 8.146 5.354a.5.5 0 11.708-.708l3 3a.5.5 0 010 .708l-3 3a.5.5 0 01-.708 0z" clip-rule="evenodd"/>
+                    <path fill-rule="evenodd" d="M1 8a.5.5 0 01.5-.5h9a.5.5 0 010 1h-9A.5.5 0 011 8z" clip-rule="evenodd"/>
+                    <path fill-rule="evenodd" d="M13.5 14.5A1.5 1.5 0 0015 13V3a1.5 1.5 0 00-1.5-1.5h-8A1.5 1.5 0 004 3v1.5a.5.5 0 001 0V3a.5.5 0 01.5-.5h8a.5.5 0 01.5.5v10a.5.5 0 01-.5.5h-8A.5.5 0 015 13v-1.5a.5.5 0 00-1 0V13a1.5 1.5 0 001.5 1.5h8z" clip-rule="evenodd"/>
+                  </svg></a></td>
+                <td>{{ settlement.name }}</td>
+                <td>{{ settlement.population }}</td>
+                <td>{{ settlement.category }}</td>
+                <td>{{ settlement.location }}</td>
+                <td>{{ settlement.economy }}</td>
+                <td>{{ settlement.known_for }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+      </table>
 {% endblock content %}

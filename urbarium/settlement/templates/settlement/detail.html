@@ -1,18 +1,22 @@
 {% extends 'urbarium/base.html' %}
 
-{% block title%}Settlement Details | {% endblock title%}
+{% block title %}Settlement Details | {% endblock title %}
 
-{% block content %}   
-    <h1>{{ settlement.name }}</h1>
+{% block content %}
+<div class="card">
+  <div class="card-header">{{ settlement.name }}</div>
+  <div class="card-body">{{ settlement.population }}, 
+       {{ settlement.category }}, 
+       {{ settlement.location }}, 
+       {{ settlement.economy }}, 
+       {{ settlement.known_for }}
+    </div>
+</div>
+<p><a class="btn btn-primary" href="{% url 'settlement:edit' settlement.id %}">Edit</a></p>
 
-    {% if error_message %}
-        <p><strong>{{ error_message }}</strong></p>
-    {% endif %}
-
-    <p>This is {{ settlement.name }}</p>
-
-    <form action="" method="post">{% csrf_token %}
-    <input type="submit" value="Edit">
-    </form>
+<!-- <form action="" method="post">{% csrf_token %}
+<span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Test tooltip">
+  <input type="submit" value="Edit">
+</span>
+</form> -->
 {% endblock content %}
-

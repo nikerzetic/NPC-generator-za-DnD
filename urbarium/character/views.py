@@ -23,4 +23,3 @@ def save(request):
 
 def generator(request):
     return HttpResponse("generator")
-
