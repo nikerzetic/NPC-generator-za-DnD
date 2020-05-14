@@ -5,4 +5,16 @@
 {% block content %}
 <h1>Character Generator</h1>
 
+<div class="card">
+    <div class="card-header">Name Surname</div>
+    <div class="card-body">{{ character.race }}, {{ character.gender }}, {{ character.age }}
+        <form method="post" class="align-items-end">{% csrf_token %}
+            <!-- <input type="text" id="race" value="{{ character.race }}"><br> -->
+            <div class="text-right">
+                <a class="btn btn-primary pull-right" href="" role="button">Generate</a>
+                <button type="submit" class="btn btn-primary pull-right">Save</button>
+            </div>
+        </form>
+    </div>
+  </div>
 {% endblock content %}
