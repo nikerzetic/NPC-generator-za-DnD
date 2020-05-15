@@ -1,41 +1,71 @@
-{% extends 'urbarium/base.html' %}
+{% extends 'character/card.html' %}
 
 {% block title %}Character Details | {% endblock title %}
 
-{% block content %}
-<div class="card">
-  <div class="card-header">{{ character.name }} {{ character.surname }}</div>
-  
-  <div class="card-body">
-    <div class="row px-5">
-      <div class="col">
-        <p>{{ character.race }}, {{ character.gender }}, {{ character.age }}</p>
-        <p>{{ character.appearance }}</p>
-        <p>{{ character.mannerism }}</p>
-        <p>{{ character.interactionTrait }}</p>
-        <p>{{ character.ideal }}</p>
-        <p>{{ character.bond }}</p>
-      </div>
+{% block card-header %}{{ character.name }} {{ character.surname }}{% endblock card-header %}
 
-      <div id="abilitie-container" class="col-md-4">
-        <table class="table table-sm table-bordered table-secondary">
-          <tbody class="text-center">
-            <tr><td>STR</td><td>{{ character.strength }}</td><td>+1</td></tr>
-            <tr><td>DEX</td><td>{{ character.dexterity }}</td><td>+1</td></tr>
-            <tr><td>CON</td><td>{{ character.constitution }}</td><td>+1</td></tr>
-            <tr><td>INT</td><td>{{ character.intelligence }}</td><td>+1</td></tr>
-            <tr><td>WIS</td><td>{{ character.wisdom }}</td><td>+1</td></tr>
-            <tr><td>CHA</td><td>{{ character.charisma }}</td><td>+1</td></tr>              
-          </tbody>
-        </table>
-      </div>
-    </div>
+{% block card-body %}
+<div class="row px-5">
+  <div class="col">
+    <p>{{ character.race }}, {{ character.gender }}, {{ character.age }}</p>
+    <p>{{ character.appearance }}</p>
+    <p>{{ character.mannerism }}</p>
+    <p>{{ character.interactionTrait }}</p>
+    <p>{{ character.ideal }}</p>
+    <p>{{ character.bond }}</p>
+  </div>
 
-    {{ character.notes }}
-
-    <div id="button-container" class="text-right">
-      <a class="btn btn-primary align-self-end" href="{% url 'character:edit' character.id %}">Edit</a>
+  <div id="abilities-container" class="col-md-4">
+    <div class="container">
+      <table class="table table-sm table-bordered table-secondary">
+        <tbody class="text-center">
+          <tr>
+            <td>STR</td><td><span id="str-score">{{ character.strength }}</span> <span id="str-mod" class="text-muted"></span></td>
+            <td>INT</td><td><span id="int-score">{{ character.intelligence }}</span> <span id="int-mod" class="text-muted"></span></td>
+          </tr>
+          <tr>
+            <td>DEX</td><td><span id="dex-score">{{ character.dexterity }}</span> <span id="dex-mod" class="text-muted"></span></td>
+            <td>WIS</td><td><span id="wis-score">{{ character.wisdom }}</span> <span id="wis-mod" class="text-muted"></span></td>
+          </tr>
+          <tr>
+            <td>CON</td><td><span id="con-score">{{ character.constitution }}</span> <span id="con-mod" class="text-muted"></span></td>
+            <td>CHA</td><td><span id="cha-score">{{ character.charisma }}</span> <span id="cha-mod" class="text-muted"></span></td>
+          </tr>              
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
-{% endblock content %}
+
+{{ character.notes }}
+
+<div id="button-container" class="text-right">
+  <a class="btn btn-primary align-self-end" href="{% url 'character:edit' character.id %}">Edit</a>
+</div>
+{% endblock card-body %}
+
+
+{% block scripts %}
+<script type="text/javascript">
+  function modifier(ability) {
+    return Math.floor((ability - 10) / 2);
+  }
+
+  function abilities(ability) {
+    var score = document.getElementById(ability + "-score").innerHTML;
+    if (score === "None") {
+      document.getElementById(ability + "-score").innerHTML = ""
+      document.getElementById(ability + "-mod").innerHTML = "- -";
+    } else {
+      document.getElementById(ability + "-mod").innerHTML = modifier(score);
+    }
+  }
+
+  abilities("str");
+  abilities("dex");
+  abilities("con");
+  abilities("int");
+  abilities("wis");
+  abilities("cha");
+</script>
+{% endblock scripts %}
