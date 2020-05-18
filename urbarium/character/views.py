@@ -29,12 +29,10 @@ class NewView(generic.CreateView):
     template_name = 'character/new.html'
 
 def generator(request):
-    random_gender = randint(1,Gender.objects.count())
-    random_age = randint(0,100)
     random_character = Character(
-        gender=Gender.objects.get(pk=random_gender),
+        gender=Gender.objects.get(pk=randint(1,Gender.objects.count())),
         race=Race.objects.get(pk=randint(1,Race.objects.count())),
-        age=random_age
+        age=randint(0,100),
         )
     context = {'character': random_character}
     return render(request, 'character/generator.html', context)

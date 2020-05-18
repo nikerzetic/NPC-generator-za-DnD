@@ -5,9 +5,39 @@
   <div class="card-header">{% block card-header %}{% endblock card-header %}</div>
 
   <div class="card-body">
-    {% block card-body %}{% endblock card-body %}
+    <div class="row px-4">
+      <div class="col">
+        {% block card-basic %}{% endblock card-basic %}
+      </div>
     
-  </div>
+      <div id="abilities-container" class="col-md-4">
+        <div class="container">
+          <table class="table table-sm table-bordered table-secondary">
+            <tbody class="text-center">
+              <tr>
+                <td>STR</td><td>{% block str-table %}{% endblock str-table %}</td>
+                <td>INT</td><td>{% block int-table %}{% endblock int-table %}</td>
+              </tr>
+              <tr>
+                <td>DEX</td><td>{% block dex-table %}{% endblock dex-table %}</td>
+                <td>WIS</td><td>{% block wis-table %}{% endblock wis-table %}</td>
+              </tr>
+              <tr>
+                <td>CON</td><td>{% block con-table %}{% endblock con-table %}</td>
+                <td>CHA</td><td>{% block cha-table %}{% endblock cha-table %}</td>
+              </tr>              
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    
+    <div class="container px-4">
+      <div class="container px-3">{% block card-lower %}{% endblock card-lower %}</div>
+      {% block card-notes %}{% endblock card-notes %}
+    </div>
+    
+    {% block card-buttons %}{% endblock card-buttons %}
 </div>
 {% endblock content %}
 
