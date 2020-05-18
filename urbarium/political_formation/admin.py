@@ -1,3 +1,7 @@
 from django.contrib import admin
 
-# Register your models here.
+from political_formation.models import *
+
+admin.site.register(Classification)
+admin.site.register(Government)
+admin.site.register(PoliticalFormation)
