@@ -1,20 +1,36 @@
-{% extends 'urbarium/base.html' %}
+{% extends 'character/card.html' %}
 
 {% block title %}Character Generator | {% endblock title %}
 
-{% block content %}
-<h1>Character Generator</h1>
+{% block bform %}<form method="post">{% csrf_token %}{% endblock bform %}
 
-<div class="card">
-    <div class="card-header">Name Surname</div>
-    <div class="card-body">{{ character.race }}, {{ character.gender }}, {{ character.age }}
-        <form method="post" class="align-items-end">{% csrf_token %}
-            <!-- <input type="text" id="race" value="{{ character.race }}"><br> -->
-            <div class="text-right">
-                <a class="btn btn-primary pull-right" href="" role="button">Generate</a>
-                <button type="submit" class="btn btn-primary pull-right">Save</button>
-            </div>
-        </form>
-    </div>
-  </div>
-{% endblock content %}
+    {% block card-header %}{{ form.name }} {{ form.surname }}{% endblock card-header %}
+    
+    {% block card-basic %}
+    <p><b>Race:</b> {{ form.race }}</p>
+    <p><b>Gender:</b> {{ form.gender }}</p>
+    <p><b>Age:</b> {{ form.age }}</p>
+    {% endblock card-basic %}
+
+    {% block str-table %}{{ form.strength }}{% endblock str-table %}
+    {% block dex-table %}{{ form.dexterity }}{% endblock dex-table %}
+    {% block con-table %}{{ form.constitution }}{% endblock con-table %}
+    {% block int-table %}{{ form.intelligence }}{% endblock int-table %}
+    {% block wis-table %}{{ form.wisdom }}{% endblock wis-table %}
+    {% block cha-table %}{{ form.charisma }}{% endblock cha-table %}
+
+    {% block card-lower %}
+    <p><b>Appearance:</b> {{ form.appearance }}</p>
+    <p><b>Mannerism:</b> {{ form.mannerism }}</p>
+    <p><b>Interaction Trait:</b> {{ form.interactionTrait }}</p>
+    <p><b>Ideal:</b> {{ form.ideal }}</p>
+    <p><b>Bond: </b> {{ form.bond }}</p>
+    {% endblock card-lower %}
+
+    {% block card-notes %}<p><b>Notes:</b> {{ form.notes }}</p>{% endblock card-notes %}
+
+    {% block card-buttons %}
+    <div class="text-right"><input type="submit" value="Save" class="btn btn-primary"></div>
+    {% endblock card-buttons %}
+
+{% block eform %}</form>{% endblock eform %}

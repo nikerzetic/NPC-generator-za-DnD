@@ -5,7 +5,7 @@ from django.urls import reverse
 
 from random import randint
 
-from .models import Character, Gender, Race
+from character.models import *
 
 
 class IndexView(generic.ListView):
@@ -20,22 +20,41 @@ class DetailView(generic.DetailView):
 
 class EditView(generic.UpdateView):
     model = Character
-    fields = ['name', 'surname', 'race', 'gender', 'age']
     template_name = 'character/edit.html'
+    fields = [
+        'name', 'surname', 'race', 'gender', 'age',
+        'strength', 'dexterity', 'constitution', 'intelligence', 'wisdom', 'charisma',
+        'appearance', 'mannerism', 'interactionTrait', 'ideal', 'bond', 'notes',
+        ]
 
 class NewView(generic.CreateView):
     model = Character
-    fields = ['name', 'surname', 'race', 'gender', 'age']
     template_name = 'character/new.html'
+    fields = [
+        'name', 'surname', 'race', 'gender', 'age',
+        'strength', 'dexterity', 'constitution', 'intelligence', 'wisdom', 'charisma',
+        'appearance', 'mannerism', 'interactionTrait', 'ideal', 'bond', 'notes',
+        ]
 
-def generator(request):
-    random_character = Character(
-        gender=Gender.objects.get(pk=randint(1,Gender.objects.count())),
-        race=Race.objects.get(pk=randint(1,Race.objects.count())),
-        age=randint(0,100),
-        )
-    context = {'character': random_character}
-    return render(request, 'character/generator.html', context)
-
-def save(request):
-    return HttpResponse("save")
+class Generator(generic.CreateView):
+    model = Character
+    template_name = 'character/generator.html'
+    fields = [
+        'name', 'surname', 'race', 'gender', 'age',
+        'strength', 'dexterity', 'constitution', 'intelligence', 'wisdom', 'charisma',
+        'appearance', 'mannerism', 'interactionTrait', 'ideal', 'bond', 'notes',
+        ]
+    def get_initial(self):
+        return {
+            'gender': Gender.objects.get(pk=randint(1,Gender.objects.count())),
+            'race': Race.objects.get(pk=randint(1,Race.objects.count())),
+            'age': randint(0,100),
+            'strength': randint(6,20),
+            'dexterity': randint(6,20),
+            'constitution': randint(6,20),
+            'intelligence': randint(6,20),
+            'wisdom': randint(6,20),
+            'charisma': randint(6,20), # ??? Tu bi bilo potrebno prilagditi, da je porazdelitev bolj normalna
+            'appearance': Appearance.objects.get(pk=randint(1,Appearance.objects.count())),
+            # 'mannerism': Mannerism.objects.get(pk=randint(1,Mannerism.objects.count())),
+        }

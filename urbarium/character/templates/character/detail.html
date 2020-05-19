@@ -7,9 +7,9 @@
 {% block card-header %}{{ character.name }} {{ character.surname }}{% endblock card-header %}
   
 {% block card-basic %}
-<p><b>Race:</b> {{ character.race }}</p>
-<p><b>Gender:</b> {{ character.gender }}</p>
-<p><b>Age:</b> {{ character.age }}</p>
+{% if character.race %}<p><b>Race:</b> {{ character.race }}</p>{% endif %}
+{% if character.gender %}<p><b>Gender:</b> {{ character.gender }}</p>{% endif %}
+{% if character.age %}<p><b>Age:</b> {{ character.age }}</p>{% endif %}
 {% endblock card-basic %}
 
 {% block str-table %}<span id="str-score">{{ character.strength }}</span> <span id="str-mod" class="text-muted"></span>{% endblock str-table %}
@@ -20,19 +20,17 @@
 {% block cha-table %}<span id="cha-score">{{ character.charisma }}</span> <span id="cha-mod" class="text-muted"></span>{% endblock cha-table %}
 
 {% block card-lower %}
-<p>{{ character.appearance }}</p>
-<p>{{ character.mannerism }}</p>
-<p>{{ character.interactionTrait }}</p>
-<p>{{ character.ideal }}</p>
-<p>{{ character.bond }}</p>
+{% if character.appearance %}<p><b>Appearance:</b> {{ character.appearance }}</p>{% endif %}
+{% if character.mannerism %}<p><b>Mannerism:</b> {{ character.mannerism }}</p>{% endif %}
+{% if character.interactionTrait %}<p><b>Interaction Trait:</b> {{ character.interactionTrait }}</p>{% endif %}
+{% if character.ideal %}<p><b>Ideal:</b> {{ character.ideal }}</p>{% endif %}
+{% if character.bond %}<p><b>Bond: </b> {{ character.bond }}</p>{% endif %}
 {% endblock card-lower %}
 
-{% block card-notes %}<p>{{ character.notes }}</p>{% endblock card-notes %}
+{% if character.notes %}{% block card-notes %}<p><b>Notes:</b> {{ character.notes }}</p>{% endblock card-notes %}{% endif %}
 
 {% block card-buttons %}
-<div id="button-container" class="text-right">
-  <a class="btn btn-primary align-self-end" href="{% url 'character:edit' character.id %}">Edit</a>
-</div>
+<a class="btn btn-primary align-self-end" href="{% url 'character:edit' character.id %}">Edit</a>
 {% endblock card-buttons %}
 
 
