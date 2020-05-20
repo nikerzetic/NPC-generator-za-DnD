@@ -7,7 +7,8 @@ app_name = 'character'
 urlpatterns = [
     path('', views.IndexView.as_view(), name='index'), 
     path('<int:pk>/', views.DetailView.as_view(), name='detail'), 
-    path('<int:pk>/edit/', views.edit, name='edit'), 
+    path('<int:pk>/edit/', views.EditView.as_view(), name='edit'), 
     # path('<int:pk>/save/', views.save, name='save'), 
-    path('generator/', views.generator, name='generator'),
+    path('new/', views.NewView.as_view(), name='new'),
+    path('generator/', views.generator, name='generator')
 ]

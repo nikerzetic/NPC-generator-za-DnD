@@ -1,4 +1,6 @@
 from django.db import models
+from django.urls import reverse
+from django.core.validators import MinValueValidator, MaxValueValidator
 
 
 class Gender(models.Model):
@@ -45,19 +47,12 @@ class Character(models.Model):
     race = models.ForeignKey(Race, blank=True, null=True, on_delete=models.SET_NULL)
     age = models.IntegerField()
 
-    class Abilities(models.TextChoices):
-        STRENGTH = 'STR'
-        DEXTERITY = 'DEX'
-        CONSTITUTION = 'CON'
-        INTELIGENCE = 'INT'
-        WISDOM = 'WIS'
-        CHARISMA = 'CHA'
-
-    high_ability = models.CharField(max_length=3, choices=Abilities.choices, default=Abilities.STRENGTH)
-    low_ability = models.CharField(
-        max_length=3, choices=Abilities.choices,
-        default=Abilities.INTELIGENCE
-        )        
+    strength = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1),MaxValueValidator(30)])    
+    dexterity = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1),MaxValueValidator(30)])    
+    constitution = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1),MaxValueValidator(30)])    
+    intelligence = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1),MaxValueValidator(30)])    
+    wisdom = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1),MaxValueValidator(30)])    
+    charisma = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1),MaxValueValidator(30)])    
 
     appearance = models.ForeignKey(Appearance, blank=True, null=True, on_delete=models.SET_NULL)
     mannerism = models.ForeignKey(Mannerism, blank=True, null=True, on_delete=models.SET_NULL)
@@ -66,6 +61,10 @@ class Character(models.Model):
     bond = models.ForeignKey(Bond, blank=True, null=True, on_delete=models.SET_NULL)
 
     notes = models.TextField(max_length=1000, blank=True)
+    public = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name + ' ' + self.surname
+
+    def get_absolute_url(self):
+        return reverse('character:detail', kwargs={'pk': self.pk})

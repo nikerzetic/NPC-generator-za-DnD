@@ -1,17 +1,62 @@
-{% extends 'urbarium/base.html' %}
+{% extends 'character/card.html' %}
+
 
 {% block title %}Character Details | {% endblock title %}
 
-{% block content %}
-<div class="card">
-  <div class="card-header">{{ character.name }} {{ character.surname }}</div>
-  <div class="card-body">{{ character.race }}, {{ character.gender }}, {{ character.age }}</div>
-</div>
-<p><a class="btn btn-primary" href="{% url 'character:edit' character.id %}">Edit</a></p>
 
-<!-- <form action="" method="post">{% csrf_token %}
-<span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Test tooltip">
-  <input type="submit" value="Edit">
-</span>
-</form> -->
-{% endblock content %}
+{% block card-header %}{{ character.name }} {{ character.surname }}{% endblock card-header %}
+  
+{% block card-basic %}
+<p><b>Race:</b> {{ character.race }}</p>
+<p><b>Gender:</b> {{ character.gender }}</p>
+<p><b>Age:</b> {{ character.age }}</p>
+{% endblock card-basic %}
+
+{% block str-table %}<span id="str-score">{{ character.strength }}</span> <span id="str-mod" class="text-muted"></span>{% endblock str-table %}
+{% block dex-table %}<span id="dex-score">{{ character.dexterity }}</span> <span id="dex-mod" class="text-muted"></span>{% endblock dex-table %}
+{% block con-table %}<span id="con-score">{{ character.constitution }}</span> <span id="con-mod" class="text-muted"></span>{% endblock con-table %}
+{% block int-table %}<span id="int-score">{{ character.intelligence }}</span> <span id="int-mod" class="text-muted"></span>{% endblock int-table %}
+{% block wis-table %}<span id="wis-score">{{ character.wisdom }}</span> <span id="wis-mod" class="text-muted"></span>{% endblock wis-table %}
+{% block cha-table %}<span id="cha-score">{{ character.charisma }}</span> <span id="cha-mod" class="text-muted"></span>{% endblock cha-table %}
+
+{% block card-lower %}
+<p>{{ character.appearance }}</p>
+<p>{{ character.mannerism }}</p>
+<p>{{ character.interactionTrait }}</p>
+<p>{{ character.ideal }}</p>
+<p>{{ character.bond }}</p>
+{% endblock card-lower %}
+
+{% block card-notes %}<p>{{ character.notes }}</p>{% endblock card-notes %}
+
+{% block card-buttons %}
+<div id="button-container" class="text-right">
+  <a class="btn btn-primary align-self-end" href="{% url 'character:edit' character.id %}">Edit</a>
+</div>
+{% endblock card-buttons %}
+
+
+{% block scripts %}
+<script type="text/javascript">
+  function modifier(ability) {
+    return Math.floor((ability - 10) / 2);
+  }
+
+  function abilities(ability) {
+    var score = document.getElementById(ability + "-score").innerHTML;
+    if (score === "None") {
+      document.getElementById(ability + "-score").innerHTML = ""
+      document.getElementById(ability + "-mod").innerHTML = "- -";
+    } else {
+      document.getElementById(ability + "-mod").innerHTML = modifier(score);
+    }
+  }
+
+  abilities("str");
+  abilities("dex");
+  abilities("con");
+  abilities("int");
+  abilities("wis");
+  abilities("cha");
+</script>
+{% endblock scripts %}

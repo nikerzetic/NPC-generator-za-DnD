@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Gender, Race, Appearance, Mannerism, InteractionTrait, Ideal, Bond, Character
+from character.models import *
 
 
 admin.site.register(Character)
