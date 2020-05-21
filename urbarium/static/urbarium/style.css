@@ -3,10 +3,6 @@ html, body {
     background: thistle;
 }
 
-:root {
-    --primary: red !important;
-}
-
 #col2 {
     padding-bottom: 80vh;
 }
