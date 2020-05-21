@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, reverse
 from django.http import HttpResponse
 from django.views import generic
 
@@ -21,8 +21,7 @@ class EditView(generic.UpdateView):
     model = Settlement
     template_name = 'settlement/edit.html'
     fields = ['name', 'population', 'category',
-             'location', 'know_for', 'economy']
-
+             'location', 'knownfor', 'economy']
 
 
 def save(request):

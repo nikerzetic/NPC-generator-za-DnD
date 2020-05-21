@@ -14,37 +14,33 @@ class IndexView(generic.ListView):
     def get_queryset(self):
         return Character.objects.all()
 
+
 class DetailView(generic.DetailView):
     model = Character
     template_name = 'character/detail.html'
+
 
 class EditView(generic.UpdateView):
     model = Character
     fields = ['name', 'surname', 'race', 'gender', 'age']
     template_name = 'character/edit.html'
 
+
 class NewView(generic.CreateView):
     model = Character
     fields = ['name', 'surname', 'race', 'gender', 'age']
     template_name = 'character/new.html'
 
+
 def generator(request):
-<<<<<<< HEAD
-    random_gender = randint(1,Gender.objects.count())
-    random_age = randint(0,100)
-    random_character = Character(
-        gender=Gender.objects.get(pk=random_gender),
-        race=Race.objects.get(pk=randint(1,Race.objects.count())),
-        age=random_age
-=======
     random_character = Character(
         gender=Gender.objects.get(pk=randint(1,Gender.objects.count())),
         race=Race.objects.get(pk=randint(1,Race.objects.count())),
         age=randint(0,100),
->>>>>>> 909fb1682e58ed6676b94bcb72ea73920807c561
         )
     context = {'character': random_character}
     return render(request, 'character/generator.html', context)
+
 
 def save(request):
     return HttpResponse("save")

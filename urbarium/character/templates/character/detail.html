@@ -3,45 +3,6 @@
 
 {% block title %}Character Details | {% endblock title %}
 
-<<<<<<< HEAD
-{% block content %}
-<div class="card">
-  <div class="card-header">{{ character.name }} {{ character.surname }}</div>
-  
-  <div class="card-body">
-    <div class="row px-5">
-      <div class="col">
-        <p>{{ character.race }}, {{ character.gender }}, {{ character.age }}</p>
-        <p>{{ character.appearance }}</p>
-        <p>{{ character.mannerism }}</p>
-        <p>{{ character.interactionTrait }}</p>
-        <p>{{ character.ideal }}</p>
-        <p>{{ character.bond }}</p>
-      </div>
-
-      <div id="abilitie-container" class="col-md-4">
-        <table class="table table-sm table-bordered table-secondary">
-          <tbody class="text-center">
-            <tr><td>STR</td><td>{{ character.strength }}</td><td>+1</td></tr>
-            <tr><td>DEX</td><td>{{ character.dexterity }}</td><td>+1</td></tr>
-            <tr><td>CON</td><td>{{ character.constitution }}</td><td>+1</td></tr>
-            <tr><td>INT</td><td>{{ character.intelligence }}</td><td>+1</td></tr>
-            <tr><td>WIS</td><td>{{ character.wisdom }}</td><td>+1</td></tr>
-            <tr><td>CHA</td><td>{{ character.charisma }}</td><td>+1</td></tr>              
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    {{ character.notes }}
-
-    <div id="button-container" class="text-right">
-      <a class="btn btn-primary align-self-end" href="{% url 'character:edit' character.id %}">Edit</a>
-    </div>
-  </div>
-</div>
-{% endblock content %}
-=======
 
 {% block card-header %}{{ character.name }} {{ character.surname }}{% endblock card-header %}
   
@@ -99,4 +60,3 @@
   abilities("cha");
 </script>
 {% endblock scripts %}
->>>>>>> 909fb1682e58ed6676b94bcb72ea73920807c561

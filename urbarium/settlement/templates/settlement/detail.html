@@ -5,12 +5,16 @@
 {% block content %}
 <div class="card">
   <div class="card-header">{{ settlement.name }}</div>
-  <div class="card-body">{{ settlement.population }}, 
-       {{ settlement.category }}, 
-       {{ settlement.location }}, 
-       {{ settlement.economy }}, 
-       {{ settlement.known_for }}
-    </div>
+  <div class="card-body">
+    <ul>
+      {% if settlement.population %}<li>{{ settlement.population }}</li>{% endif %}
+      {% if settlement.category %}<li>{{ settlement.category }}</li>{% endif %}
+      {% if settlement.location %}<li>{{ settlement.location }}</li>{% endif %}
+      {% if settlement.economy %}<li>{{ settlement.economy }}</li>{% endif %}
+      {% if settlement.knownfor %}<li>{{ settlement.knownfor }}</li> {% endif %}
+      
+    </ul>
+  </div>
 </div>
 <p><a class="btn btn-primary" href="{% url 'settlement:edit' settlement.id %}">Edit</a></p>
 

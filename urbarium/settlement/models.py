@@ -32,17 +32,17 @@ class Economy(models.Model):
 
 class Settlement(models.Model):
     # Django avtomatsko doloci id, ki je primary key
-    
+
     name = models.CharField(max_length=50)
     category = models.ForeignKey(SettlementType, blank=True, null=True, on_delete=models.SET_NULL)
     population = models.IntegerField(blank=True, null=True)
     location = models.ForeignKey(Location, blank=True, null=True, on_delete=models.SET_NULL)
     economy = models.ForeignKey(Economy, blank=True, null=True, on_delete=models.SET_NULL)
-    know_for = models.ForeignKey(KnownFor, blank=True, null=True, on_delete=models.SET_NULL)
-    
+    knownfor = models.ForeignKey(KnownFor, blank=True, null=True, on_delete=models.SET_NULL)
+    public = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name
-    
+
     def get_absolute_url(self):
-        return reverse('settlement:edit', kwargs={'pk': self.pk})
+        return reverse('settlement:detail', kwargs={'pk': self.pk})
