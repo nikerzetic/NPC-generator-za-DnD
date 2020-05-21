@@ -1,3 +1,6 @@
 from django.contrib import admin
 
-# Register your models here.
+from governing_body.models import *
+
+admin.site.register(Classification)
+admin.site.register(GoverningBody)
