@@ -42,7 +42,7 @@ class Bond(models.Model):
 class Character(models.Model):
     # Django avtomatsko doloci id, ki je primary key
     name = models.CharField(max_length=50)
-    surname = models.CharField(max_length=50, blank=True)
+    surname = models.CharField(max_length=100, blank=True)
     gender = models.ForeignKey(Gender, blank=True, null=True, on_delete=models.SET_NULL)
     race = models.ForeignKey(Race, blank=True, null=True, on_delete=models.SET_NULL)
     age = models.IntegerField(blank=True, null=True, validators=([MinValueValidator(0)]))

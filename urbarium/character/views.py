@@ -17,6 +17,7 @@ class IndexView(generic.ListView):
 class DetailView(generic.DetailView):
     model = Character
     template_name = 'character/detail.html'
+    # ??? dodati se titles in conections na kraje
 
 class EditView(generic.UpdateView):
     model = Character
@@ -49,12 +50,15 @@ class Generator(generic.CreateView):
             'gender': Gender.objects.get(pk=randint(1,Gender.objects.count())),
             'race': Race.objects.get(pk=randint(1,Race.objects.count())),
             'age': randint(0,100),
-            'strength': randint(6,20),
-            'dexterity': randint(6,20),
-            'constitution': randint(6,20),
-            'intelligence': randint(6,20),
-            'wisdom': randint(6,20),
-            'charisma': randint(6,20), # ??? Tu bi bilo potrebno prilagditi, da je porazdelitev bolj normalna
+            'strength': randint(6,18),
+            'dexterity': randint(6,18),
+            'constitution': randint(6,18),
+            'intelligence': randint(6,18),
+            'wisdom': randint(6,18),
+            'charisma': randint(6,18), # ??? Tu bi bilo potrebno prilagditi, da je porazdelitev bolj normalna
             'appearance': Appearance.objects.get(pk=randint(1,Appearance.objects.count())),
             # 'mannerism': Mannerism.objects.get(pk=randint(1,Mannerism.objects.count())),
+            # 'interactionTrait': Appearance.objects.get(pk=randint(1,Appearance.objects.count())),
+            'ideal': Appearance.objects.get(pk=randint(1,Appearance.objects.count())),
+            'bond': Appearance.objects.get(pk=randint(1,Appearance.objects.count())),
         }

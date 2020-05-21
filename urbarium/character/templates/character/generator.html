@@ -4,7 +4,7 @@
 
 {% block bform %}<form method="post">{% csrf_token %}{% endblock bform %}
 
-    {% block card-header %}{{ form.name }} {{ form.surname }}{% endblock card-header %}
+    {% block card-header %}{{ form.name }} {{ form.surname }} <a class="btn btn-sm text-primary" onclick="randomName()">Random Name</a>{% endblock card-header %}
     
     {% block card-basic %}
     <p><b>Race:</b> {{ form.race }}</p>
@@ -34,3 +34,12 @@
     {% endblock card-buttons %}
 
 {% block eform %}</form>{% endblock eform %}
+
+{% block scripts %}
+<script type="text/javascript">
+function randomName() {
+    document.getElementById("id_name").value = "Test";
+    document.getElementById("id_surname").value = "Test";
+}
+</script>
+{% endblock scripts %}

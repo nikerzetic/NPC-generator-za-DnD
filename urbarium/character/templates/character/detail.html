@@ -43,7 +43,7 @@
   function abilities(ability) {
     var score = document.getElementById(ability + "-score").innerHTML;
     if (score === "None") {
-      document.getElementById(ability + "-score").innerHTML = ""
+      document.getElementById(ability + "-score").innerHTML = "";
       document.getElementById(ability + "-mod").innerHTML = "- -";
     } else {
       document.getElementById(ability + "-mod").innerHTML = modifier(score);
