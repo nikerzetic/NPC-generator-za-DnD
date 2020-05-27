@@ -1,0 +1,13 @@
+{% extends 'urbarium/base.html' %}
+
+{% block content %}
+
+<div id="top-button-container" class="mb-4">
+    <a class="btn btn-primary btn-block" href="{% url 'character:new' %}">Create New Character</a>
+    <a class="btn btn-primary btn-block" href="{% url 'character:generator' %}">Generate a Character</a>
+</div>
+
+
+{% block character_content %}{% endblock character_content %}
+
+{% endblock content %}

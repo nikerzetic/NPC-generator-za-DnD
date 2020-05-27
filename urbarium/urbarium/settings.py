@@ -80,10 +80,25 @@ WSGI_APPLICATION = 'urbarium.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
+
+# PostgreSQL
+with open('user-credentials.txt', 'r') as file:
+    username, password = file.readline().split(',')
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'sem2020_nike',
+        'USER': username,
+        'PASSWORD': password,
+        'HOST': 'baza.fmf.uni-lj.si',
+        'PORT': '5432',
     }
 }
 
