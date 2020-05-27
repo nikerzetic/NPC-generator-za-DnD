@@ -3,10 +3,10 @@ html, body {
     background: thistle;
 }
 
-:root {
-    --primary: red !important;
-}
-
 #col2 {
     padding-bottom: 80vh;
+}
+
+#id_strength, #id_dexterity, #id_constitution, #id_intelligence, #id_wisdom, #id_charisma {
+    width: 40px;
 }

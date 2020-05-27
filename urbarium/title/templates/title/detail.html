@@ -1,12 +1,16 @@
 {% extends 'urbarium/base.html' %}
 
-{% block title%}Title Details | {% endblock title%}
+{% block title %}Title Details | {% endblock title %}
 
-{% block content %}   
-    
-    <p>Blank Page</p>
-
-    <form action="" method="post">{% csrf_token %}
-    <input type="submit" value="Edit">
-    </form>
+{% block content %}
+<div class="card">
+  <div class="card-header">{{ title.name }}</div>
+  <div class="card-body">
+    <ul>
+      {% if title.concerning %}<li>{{ title.concerning }}</li>{% endif %}
+      {% if title.holders %}<li>{{ title.holders }}</li>{% endif %}
+    </ul>
+  </div>
+</div>
+<p><a class="btn btn-primary" href="{% url 'title:edit' title.id %}">Edit</a></p>
 {% endblock content %}
