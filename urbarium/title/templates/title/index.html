@@ -24,11 +24,12 @@
                     </svg></a></td>
                     <td>{{ title.name }}</td>
                     <td>{{ title.concerning }}</td>
-                    <td>{% for holder in title.holders.all %}
-                        <ul>
-                        {{ holder }}
-                        </ul>
-                        {% endfor %}
+                    <td>
+                        <div style="height:60px;width:240px;border:1px solid #ccc;overflow:auto;">
+                                {% for holder in title.holders.all %}
+                                <ul style="line-height:90%">{{ holder }}</ul>
+                                {% endfor %}
+                        </div>
                     </td>
                     <td>{{ title.current_holder }}</td>
                 </tr>
