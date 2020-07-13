@@ -9,6 +9,7 @@ class Title(models.Model):
     name = models.CharField(max_length=100)
     concerning = models.ForeignKey(GoverningBody, blank=True, null=True, on_delete=models.SET_NULL)
     holders = models.ManyToManyField(Character)
+    current_holder = models.ForeignKey(Character, blank=True, null=True, on_delete=models.SET_NULL, related_name='current_holder')
     public = models.BooleanField(default=False)
 
     def __str__(self):

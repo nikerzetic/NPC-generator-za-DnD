@@ -20,7 +20,7 @@ class DetailView(generic.DetailView):
 class EditView(generic.UpdateView):
     model = Title
     template_name = 'title/edit.html'
-    fields = ['name', 'concerning', 'holders']
+    fields = ['name', 'concerning', 'holders', 'current_holder']
 
 
 def save(request):

@@ -7,8 +7,17 @@
   <div class="card-header">{{ title.name }}</div>
   <div class="card-body">
     <ul>
-      {% if title.concerning %}<li>{{ title.concerning }}</li>{% endif %}
-      {% if title.holders %}<li>{{ title.holders }}</li>{% endif %}
+      {% if title.concerning %}<li><b>Governing Body: </b>{{ title.concerning }}</li>{% endif %}
+      {% if title.holders %}
+          <li><b>Holders</b>: 
+              <ul>
+                {% for holder in title.holders.all %}
+                  <li>{{ holder }}</li>
+                {% endfor %}
+              </ul>
+          </li>
+      {% endif %}
+      <li><b>Current Holder: </b>{{ title.current_holder }}</li>
     </ul>
   </div>
 </div>

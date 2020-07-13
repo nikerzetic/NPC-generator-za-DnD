@@ -10,6 +10,7 @@
                 <th scope="col">Name</th>
                 <th scope="col">GoverningBody</th>
                 <th scope="col">Holders</th>
+                <th scope="col">Current Holder</th>
             </tr>
         </thead>
         <tbody>
@@ -23,7 +24,13 @@
                     </svg></a></td>
                     <td>{{ title.name }}</td>
                     <td>{{ title.concerning }}</td>
-                    <td>{{ title.holders }}</td>
+                    <td>{% for holder in title.holders.all %}
+                        <ul>
+                        {{ holder }}
+                        </ul>
+                        {% endfor %}
+                    </td>
+                    <td>{{ title.current_holder }}</td>
                 </tr>
                 {% endfor %}
             {% else %}
@@ -38,6 +45,7 @@
                             <td>{{ title.name }}</td>
                             <td>{{ title.concerning }}</td>
                             <td>{{ title.holders }}</td>
+                            <td>{{ title.current_holder }}</td>
                         </tr>
                     {% endif %}
                 {% endfor %}
