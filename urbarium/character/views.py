@@ -14,10 +14,12 @@ class IndexView(generic.ListView):
     def get_queryset(self):
         return Character.objects.all()
 
+
 class DetailView(generic.DetailView):
     model = Character
     template_name = 'character/detail.html'
     # ??? dodati se titles in conections na kraje
+
 
 class EditView(generic.UpdateView):
     model = Character
@@ -27,6 +29,7 @@ class EditView(generic.UpdateView):
         'strength', 'dexterity', 'constitution', 'intelligence', 'wisdom', 'charisma',
         'appearance', 'mannerism', 'interactionTrait', 'ideal', 'bond', 'notes',
         ]
+
 
 class NewView(generic.CreateView):
     model = Character

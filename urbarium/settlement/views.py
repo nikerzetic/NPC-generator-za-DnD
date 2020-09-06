@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, reverse
 from django.http import HttpResponse
 from django.views import generic
 
@@ -7,7 +7,7 @@ from .models import Settlement
 
 class IndexView(generic.ListView):
     template_name = 'settlement/index.html'
-
+    context_object_name = 'settlement_list'
     def get_queryset(self):
         return Settlement.objects.order_by('id')
 
@@ -17,8 +17,11 @@ class DetailView(generic.DetailView):
     template_name = 'settlement/detail.html'
 
 
-def edit(request):
-    return HttpResponse("edit")
+class EditView(generic.UpdateView):
+    model = Settlement
+    template_name = 'settlement/edit.html'
+    fields = ['name', 'population', 'category',
+             'location', 'knownfor', 'economy']
 
 
 def save(request):

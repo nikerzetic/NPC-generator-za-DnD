@@ -9,7 +9,7 @@ class Classification(models.Model):
 
 class GoverningBody(models.Model):
     name = models.CharField(max_length=100)
-    classification = models.ForeignKey(Classification, blank=True, null=True, on_delete=models.SET_NULL)
+    classification = models.ForeignKey(Classification, blank=True, null=True, on_delete=models.SET_NULL) # tip_organa
 
     def __str__(self):
         return self.name

@@ -1,4 +1,5 @@
 from django.urls import path
+from django.contrib.auth.decorators import login_required
 
 from . import views
 
@@ -7,7 +8,7 @@ app_name = 'character'
 urlpatterns = [
     path('', views.IndexView.as_view(), name='index'), 
     path('<int:pk>/', views.DetailView.as_view(), name='detail'), 
-    path('<int:pk>/edit/', views.EditView.as_view(), name='edit'), 
-    path('new/', views.NewView.as_view(), name='new'),
-    path('generator/', views.Generator.as_view(), name='generator')
+    path('<int:pk>/edit/', login_required(views.EditView.as_view()), name='edit'), 
+    path('new/', login_required(views.NewView.as_view()), name='new'),
+    path('generator/', login_required(views.Generator.as_view()), name='generator')
 ]
