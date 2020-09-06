@@ -1,5 +1,5 @@
 {% extends 'urbarium/base.html' %}
-
+{% load crispy_forms_tags %}
 {% block title%}Profile | {% endblock title%}
 
 {% block content %}
@@ -15,8 +15,8 @@
         <fieldset class="from-group">
             <legend class="border-bottom mb-4">Profile Info</legend>
             <!-- lahko bi uporabila crispy_forms tukej, bo velik lepš zgledal -->
-            {{ u_form.as_p }}
-            {{ p_form.as_p }}
+            {{ u_form|crispy }}
+            {{ p_form|crispy }}
         </fieldset>
         <div class="form-group">
             <button class="btn btn-outline-info" type="submit">Update</button>
