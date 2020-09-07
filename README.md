@@ -1,6 +1,8 @@
 # Urbarium - NPC generator za DnD
 Projekt pri predmetu Osnove podatkovnih baz.
 
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/nikerzetic/NPC-generator-za-DnD.git/master)
+
 ## Namestitev
 Z GitHuba kopiraj repozitorij.
 ```
@@ -28,5 +30,3 @@ pip install -r requirements.txt
 ER diagram: https://www.lucidchart.com/documents/edit/643bdfb1-d0f7-4ca5-8613-21649b9e46a5/0_0
 
 Trello deska projekta: https://trello.com/b/H3imQbGu/opb-projektna-naloga
-
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/nikerzetic/NPC-generator-za-DnD.git/master)
