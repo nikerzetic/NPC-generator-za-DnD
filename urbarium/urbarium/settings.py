@@ -77,6 +77,10 @@ WSGI_APPLICATION = 'urbarium.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
+# PostgreSQL
+with open('user-credentials.txt', 'r') as file:
+    username, password = file.readline().split(',')
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
