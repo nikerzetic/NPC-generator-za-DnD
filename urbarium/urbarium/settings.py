@@ -89,7 +89,7 @@ DATABASES = {
         'USER': username,
         'PASSWORD': password,
         'HOST': 'baza.fmf.uni-lj.si',
-        'PORT': '5432',
+        'PORT': '443',
     }
 }
 
