@@ -1,6 +1,7 @@
 #!/bin/bash
 export DJANGO_PORT=8000
 export DJANGO_URL=${JUPYTERHUB_SERVICE_PREFIX}proxy/${DJANGO_PORT}/
+export POSTGRES_PORT=443
 cd urbarium
 python manage.py runserver &
 exec "$@"
