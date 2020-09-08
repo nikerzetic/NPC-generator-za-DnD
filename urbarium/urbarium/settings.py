@@ -78,8 +78,12 @@ WSGI_APPLICATION = 'urbarium.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 # PostgreSQL
-with open('user-credentials.txt', 'r') as file:
-    username, password = file.readline().split(',')
+if os.path.isfile('user-credentials.txt'):
+    with open('user-credentials.txt', 'r') as file:
+        username, password = file.readline().split(',')
+else:
+    with open('public-credentials.txt', 'r') as file:
+        username, password = file.readline().split(',')
 
 DATABASES = {
     'default': {
