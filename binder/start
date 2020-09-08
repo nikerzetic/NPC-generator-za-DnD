@@ -1,0 +1,6 @@
+#!/bin/bash
+export DJANGO_PORT=8000
+export DJANGO_URL=${JUPYTERHUB_SERVICE_PREFIX}proxy/${DJANGO_PORT}/
+cd urbarium
+python manage.py runserver &
+exec "$@"

@@ -1,3 +1,0 @@
-#!/bin/bash
-python ./urbarium/manage.py runserver
-exec "$@"
