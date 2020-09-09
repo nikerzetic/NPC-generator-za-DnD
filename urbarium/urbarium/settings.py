@@ -9,6 +9,9 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 
+FORCE_SCRIPT_NAME = os.environ.get('DJANGO_URL', None)
+DB_PORT = os.environ.get('POSTGRES_PORT', 5432)
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -77,10 +80,23 @@ WSGI_APPLICATION = 'urbarium.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
+# PostgreSQL
+if os.path.isfile('user-credentials.txt'):
+    with open('user-credentials.txt', 'r') as file:
+        username, password = file.readline().split(',')
+else:
+    with open('public-credentials.txt', 'r') as file:
+        username, password = file.readline().split(',')
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        #'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': 'sem2020_nike',
+        'USER': username,
+        'PASSWORD': password,
+        'HOST': 'baza.fmf.uni-lj.si',
+        'PORT': DB_PORT,
     }
 }
 
@@ -121,13 +137,15 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
+if FORCE_SCRIPT_NAME:
+    STATIC_URL = FORCE_SCRIPT_NAME + 'static/'
+    LOGIN_REDIRECT_URL = FORCE_SCRIPT_NAME + 'user/profile'
+    LOGOUT_REDIRECT_URL = FORCE_SCRIPT_NAME + 'user/logout'
+else:
+    STATIC_URL = '/static/'
+    LOGIN_REDIRECT_URL = '/user/profile'
+    LOGOUT_REDIRECT_URL = '/user/logout'
 
-# potem ko bova naredila homepage, tukaj samo spremeniš
-# ko se prijaviš v svoj acc te bo vrglo na to stran:
-LOGIN_REDIRECT_URL = 'character:index'
-# login route (uses it instead of accounts/login/?next=/users/profile/)
-LOGIN_URL = 'login'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
