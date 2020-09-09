@@ -138,11 +138,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 if FORCE_SCRIPT_NAME:
-    STATIC_URL = FORCE_SCRIPT_NAME + 'static/'
-    LOGIN_REDIRECT_URL = FORCE_SCRIPT_NAME + 'user/profile'
-    LOGOUT_REDIRECT_URL = FORCE_SCRIPT_NAME + 'user/logout'
+    STATIC_URL = BASE_DIR + 'static/'
+    LOGIN_REDIRECT_URL = BASE_DIR + 'user/profile'
+    LOGOUT_REDIRECT_URL = BASE_DIR + 'user/logout'
 else:
-    STATIC_URL = 'static/'
+    STATIC_URL = '/static/'
     LOGIN_REDIRECT_URL = '/user/profile'
     LOGOUT_REDIRECT_URL = '/user/logout'
 
