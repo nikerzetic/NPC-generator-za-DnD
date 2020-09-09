@@ -1,12 +1,18 @@
-{% extends 'urbarium/base.html' %}
+{% extends 'political_formation/card.html' %}
 
-{% block title%}Political Formation Details | {% endblock title%}
 
-{% block content %}   
-    
-    <p>Blank Page</p>
+{% block title %}Political Formation Details | {% endblock title %}
 
-    <form action="" method="post">{% csrf_token %}
-    <input type="submit" value="Edit">
-    </form>
-{% endblock content %}
+
+{% block card-header %}{{ political_formation.name }}{% endblock card-header %}
+
+{% block card-basic %}
+{% if political_formation.classification %}<p><b>Classification:</b> {{ political_formation.classification }}</p>{% endif %}
+{% if political_formation.government %}<p><b>Government:</b> {{ political_formation.government }}</p>{% endif %}
+{% if political_formation.governing_body %}<p><b>Governing Body:</b> {{ political_formation.governing_body }}</p>{% endif %}
+{% endblock card-basic %}
+
+{% block card-buttons %}
+<a class="btn btn-primary align-self-end" href="{% url 'political_formation:edit' political_formation.id %}">Edit</a>
+{% endblock card-buttons %}
+

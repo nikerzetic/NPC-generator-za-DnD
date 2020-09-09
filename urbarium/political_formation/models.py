@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 from governing_body.models import GoverningBody
 
@@ -20,6 +21,10 @@ class PoliticalFormation(models.Model):
     classification = models.ForeignKey(Classification, blank=True, null=True, on_delete=models.SET_NULL) # tip_tvorbe
     government = models.ForeignKey(Government, blank=True, null=True, on_delete=models.SET_NULL) # tip_oblasti
     governing_body = models.ForeignKey(GoverningBody, blank=True, null=True, on_delete=models.SET_NULL) # organ
+    public = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse('political_formation:detail', kwargs={'pk': self.pk})

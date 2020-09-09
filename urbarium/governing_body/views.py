@@ -20,10 +20,10 @@ class DetailView(generic.DetailView):
 class EditView(generic.UpdateView):
     model = GoverningBody
     template_name = 'governing_body/edit.html'
-    fields = ['name', 'classification']
+    fields = ['name', 'classification',]
 
 
 class NewView(generic.CreateView):
     model = GoverningBody
     template_name = 'governing_body/new.html'
-    fields = ['name', 'classification']
+    fields = ['name', 'classification',]
