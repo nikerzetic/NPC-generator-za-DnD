@@ -137,9 +137,6 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-STATIC_URL = FORCE_SCRIPT_NAME + 'static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
-
 if FORCE_SCRIPT_NAME:
     STATIC_URL = FORCE_SCRIPT_NAME + 'static/'
     LOGIN_REDIRECT_URL = FORCE_SCRIPT_NAME + 'user/profile'
@@ -148,5 +145,7 @@ else:
     STATIC_URL = 'static/'
     LOGIN_REDIRECT_URL = '/user/profile'
     LOGOUT_REDIRECT_URL = '/user/logout'
+
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
