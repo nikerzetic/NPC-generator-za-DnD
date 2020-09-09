@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 
-FORCE_SCRIPT_NAME = os.environ.get('DJANGO_URL', None)
+FORCE_SCRIPT_NAME = os.environ.get('DJANGO_URL', '/')
 DB_PORT = os.environ.get('POSTGRES_PORT', 5432)
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
