@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 
-FORCE_SCRIPT_NAME = os.environ.get('DJANGO_URL', '/')
+FORCE_SCRIPT_NAME = os.environ.get('DJANGO_URL', None)
 DB_PORT = os.environ.get('POSTGRES_PORT', 5432)
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -140,10 +140,13 @@ USE_TZ = True
 STATIC_URL = FORCE_SCRIPT_NAME + 'static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
 
-# potem ko bova naredila homepage, tukaj samo spremeniš
-# ko se prijaviš v svoj acc te bo vrglo na to stran:
-LOGIN_REDIRECT_URL = 'character:index'
-# login route (uses it instead of accounts/login/?next=/users/profile/)
-LOGIN_URL = 'login'
+if FORCE_SCRIPT_NAME:
+    STATIC_URL = FORCE_SCRIPT_NAME + 'static/'
+    LOGIN_REDIRECT_URL = FORCE_SCRIPT_NAME + 'user/profile'
+    LOGOUT_REDIRECT_URL = FORCE_SCRIPT_NAME + 'user/logout'
+else:
+    STATIC_URL = 'static/'
+    LOGIN_REDIRECT_URL = '/user/profile'
+    LOGOUT_REDIRECT_URL = '/user/logout'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
