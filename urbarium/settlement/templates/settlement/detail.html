@@ -1,26 +1,20 @@
-{% extends 'urbarium/base.html' %}
+{% extends 'settlement/card.html' %}
+
 
 {% block title %}Settlement Details | {% endblock title %}
 
-{% block content %}
-<div class="card">
-  <div class="card-header">{{ settlement.name }}</div>
-  <div class="card-body">
-    <ul>
-      {% if settlement.population %}<li>{{ settlement.population }}</li>{% endif %}
-      {% if settlement.category %}<li>{{ settlement.category }}</li>{% endif %}
-      {% if settlement.location %}<li>{{ settlement.location }}</li>{% endif %}
-      {% if settlement.economy %}<li>{{ settlement.economy }}</li>{% endif %}
-      {% if settlement.knownfor %}<li>{{ settlement.knownfor }}</li> {% endif %}
-      
-    </ul>
-  </div>
-</div>
-<p><a class="btn btn-primary" href="{% url 'settlement:edit' settlement.id %}">Edit</a></p>
 
-<!-- <form action="" method="post">{% csrf_token %}
-<span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Test tooltip">
-  <input type="submit" value="Edit">
-</span>
-</form> -->
-{% endblock content %}
+{% block card-header %}{{ settlement.name }}{% endblock card-header %}
+  
+{% block card-basic %}
+{% if settlement.population %}<p><b>Population:</b> {{ settlement.population }}</p>{% endif %}
+{% if settlement.category %}<p><b>Category:</b> {{ settlement.category }}</p>{% endif %}
+{% if settlement.location %}<p><b>Location:</b> {{ settlement.location }}</p>{% endif %}
+{% if settlement.economy %}<p><b>Economy:</b> {{ settlement.economy }}</p>{% endif %}
+{% if settlement.knownfor %}<p><b>Known For:</b> {{ settlement.knownfor }}</p>{% endif %}
+{% endblock card-basic %}
+
+{% block card-buttons %}
+<a class="btn btn-primary align-self-end" href="{% url 'settlement:edit' settlement.id %}">Edit</a>
+{% endblock card-buttons %}
+

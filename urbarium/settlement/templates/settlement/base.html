@@ -1,0 +1,12 @@
+{% extends 'urbarium/base.html' %}
+
+{% block content %}
+
+<div id="top-button-container" class="mb-4">
+    <a class="btn btn-primary btn-block" href="{% url 'settlement:new' %}">Create New Settlement</a>
+</div>
+
+
+{% block settlement_content %}{% endblock settlement_content %}
+
+{% endblock content %}

@@ -3,24 +3,9 @@
 {% block title %}Settlements | {% endblock title %}
 
 {% block content %}
-    <!-- Card Style -->
-    <!-- <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4">
-        {% for character in character_list %}
-        <div class="col my-4">
-            <div class="card">
-                <div class="card-header">{{ character.name }} {{ character.surname }}</div>
-                <div class="card-body">{{ character.race }}, {{ character.gender }}, {{ character.age }}</div>
-            </div>
-        </div>
-        {% empty %}
-        <div class="col my-4">
-            <div class="card text-white bg-danger">
-                <div class="card-header">Error</div>
-                <div class="card-body">There are no characters.</div>
-            </div>
-        </div>
-        {% endfor %}
-    </div> -->
+    <div id="top-button-container" class="mb-4">
+        <a class="btn btn-primary btn-block" href="{% url 'settlement:new' %}">Create New Settlement</a>
+    </div>
 
     <!-- Table Style -->
     <table class="table table-hover table-light">

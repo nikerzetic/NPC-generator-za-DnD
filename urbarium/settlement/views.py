@@ -24,5 +24,8 @@ class EditView(generic.UpdateView):
              'location', 'knownfor', 'economy']
 
 
-def save(request):
-    return HttpResponse("save")
+class NewView(generic.CreateView):
+    model = Settlement
+    template_name = 'settlement/new.html'
+    fields = [
+        'name', 'population', 'category', 'location', 'knownfor', 'economy']

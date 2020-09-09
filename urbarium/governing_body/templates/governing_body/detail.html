@@ -1,12 +1,15 @@
-{% extends 'urbarium/base.html' %}
+{% extends 'governing_body/card.html' %}
 
-{% block title%}Gevorning Body Details | {% endblock title%}
 
-{% block content %}   
-    
-    <p>Blank Page</p>
+{% block title %}Governing Body Details | {% endblock title %}
 
-    <form action="" method="post">{% csrf_token %}
-    <input type="submit" value="Edit">
-    </form>
-{% endblock content %}
+
+{% block card-header %}{{ governing_body.name }}{% endblock card-header %}
+  
+{% block card-basic %}
+{% if governing_body.classification %}<p><b>Classification:</b> {{ governing_body.classification }}</p>{% endif %}
+{% endblock card-basic %}
+
+{% block card-buttons %}
+<a class="btn btn-primary align-self-end" href="{% url 'governing_body:edit' governing_body.id %}">Edit</a>
+{% endblock card-buttons %}

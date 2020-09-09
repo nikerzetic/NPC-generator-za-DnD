@@ -23,5 +23,7 @@ class EditView(generic.UpdateView):
     fields = ['name', 'concerning', 'holders', 'current_holder']
 
 
-def save(request):
-    return HttpResponse("save")
+class NewView(generic.CreateView):
+    model = Title
+    template_name = 'title/new.html'
+    fields = ['name', 'concerning', 'holders', 'current_holder']
