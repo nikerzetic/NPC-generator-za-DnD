@@ -1,6 +1,8 @@
 # Urbarium - NPC generator za DnD
 Projekt pri predmetu Osnove podatkovnih baz.
 
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/nikerzetic/NPC-generator-za-DnD.git/master?urlpath=proxy/8000/)
+
 ## Namestitev
 Z GitHuba kopiraj repozitorij.
 ```
