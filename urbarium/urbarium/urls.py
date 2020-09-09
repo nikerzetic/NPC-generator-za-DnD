@@ -16,8 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 from django.contrib.auth import views as auth_views
+from urbarium.views import home
+
 
 urlpatterns = [
+    path('', home, name='homepage'),
     path('character/', include('character.urls')),
     path('settlement/', include('settlement.urls')),
     path('political-formation/', include('political_formation.urls')),
