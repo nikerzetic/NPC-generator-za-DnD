@@ -1,7 +1,12 @@
 {% extends 'urbarium/base.html' %}
 
 {% block content %}
-<p>
-    Test
-</p>
+<h1>Urbarium</h1>
+
+<p>Urbarium is a tool for creating and managing non-player character, settlements, and other things connected to the two. The app also includes an NPC generator. The NPC, or Character, objects is based on the random tables found in the Dungeons & Dragons Dungeon Master's Manual.</p>
+
+<p>The list of existing characters is available <a href="{% url 'character:index' %}">here</a>. It shows both pulic and personal characters (the latter requires login). You can generate <a href="{% url 'character:generator' %}">here</a>. You must be logged-in in order to save or edit the created characters.</p>
+
+<p>The list of existing settlements is available <a href="{% url 'settlement:index' %}">here</a>. It shows both pulic and personal settlements (the latter requires login). You must be logged-in in order to save or edit the created settlements.</p>
+
 {% endblock content %}

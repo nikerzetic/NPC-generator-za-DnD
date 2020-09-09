@@ -26,7 +26,7 @@ class Mannerism(models.Model):
 class InteractionTrait(models.Model):
     trait = models.CharField(max_length=20)
     def __str__(self):
-        return self.description
+        return self.trait
 
 class Ideal(models.Model):
     description = models.CharField(max_length=20)

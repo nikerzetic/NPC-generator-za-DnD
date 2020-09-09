@@ -18,11 +18,13 @@ from django.urls import include, path
 from django.contrib.auth import views as auth_views
 from django.conf import settings
 from django.conf.urls.static import static
-from urbarium.views import home
+from urbarium.views import home, about
 
 
 urlpatterns = [
     path('', home, name='homepage'),
+    path('about/', about, name='about'),
+
     path('character/', include('character.urls')),
     path('settlement/', include('settlement.urls')),
     path('political-formation/', include('political_formation.urls')),
