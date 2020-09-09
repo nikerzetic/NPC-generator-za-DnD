@@ -9,6 +9,9 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 
+FORCE_SCRIPT_NAME = os.environ.get('DJANGO_URL', None)
+DB_PORT = os.environ.get('POSTGRES_PORT', 5432)
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -88,12 +91,12 @@ else:
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        #'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         'NAME': 'sem2020_nike',
         'USER': username,
         'PASSWORD': password,
         'HOST': 'baza.fmf.uni-lj.si',
-        'PORT': '443',
+        'PORT': DB_PORT,
     }
 }
 
@@ -134,7 +137,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = FORCE_SCRIPT_NAME + 'static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
 
 # potem ko bova naredila homepage, tukaj samo spremeniš
