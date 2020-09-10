@@ -1,5 +1,3 @@
-from django.shortcuts import render
-from django.http import HttpResponse
 from django.views import generic
 from django.urls import reverse
 
@@ -59,8 +57,8 @@ class Generator(generic.CreateView):
             'wisdom': randint(6,18),
             'charisma': randint(6,18), # ??? Tu bi bilo potrebno prilagditi, da je porazdelitev bolj normalna
             'appearance': Appearance.objects.get(pk=randint(1,Appearance.objects.count())),
-            # 'mannerism': Mannerism.objects.get(pk=randint(1,Mannerism.objects.count())),
-            # 'interactionTrait': Appearance.objects.get(pk=randint(1,Appearance.objects.count())),
-            'ideal': Appearance.objects.get(pk=randint(1,Appearance.objects.count())),
-            'bond': Appearance.objects.get(pk=randint(1,Appearance.objects.count())),
+            'mannerism': Mannerism.objects.get(pk=randint(1,Mannerism.objects.count())),
+            'interactionTrait': InteractionTrait.objects.get(pk=randint(1,InteractionTrait.objects.count())),
+            'ideal': Ideal.objects.get(pk=randint(1,Ideal.objects.count())),
+            'bond': Bond.objects.get(pk=randint(1,Bond.objects.count())),
         }
