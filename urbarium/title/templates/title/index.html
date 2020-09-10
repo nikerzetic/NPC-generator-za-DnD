@@ -3,6 +3,11 @@
 {% block title %}Title | {% endblock title %}
 
 {% block content %}
+    <div id="top-button-container" class="mb-4">
+        <a class="btn btn-primary btn-block" href="{% url 'title:new' %}">Create New Title</a>
+    </div>
+
+
     <table class="table table-hover table-light">
         <thead class="thead-dark">
             <tr>

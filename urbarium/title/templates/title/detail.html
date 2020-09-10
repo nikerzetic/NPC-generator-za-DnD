@@ -1,25 +1,25 @@
-{% extends 'urbarium/base.html' %}
+{% extends 'title/card.html' %}
+
 
 {% block title %}Title Details | {% endblock title %}
 
-{% block content %}
-<div class="card">
-  <div class="card-header">{{ title.name }}</div>
-  <div class="card-body">
-    <ul>
-      {% if title.concerning %}<li><b>Governing Body: </b>{{ title.concerning }}</li>{% endif %}
-      {% if title.holders %}
-          <li><b>Holders</b>: 
+
+{% block card-header %}{{ title.name }}{% endblock card-header %}
+  
+{% block card-basic %}
+{% if title.concerning %}<p><b>Governing Body:</b> {{ title.concerning }}</p>{% endif %}
+{% if title.holders %}
+          <p><b>Holders</b>: 
               <ul>
                 {% for holder in title.holders.all %}
                   <li>{{ holder }}</li>
                 {% endfor %}
               </ul>
-          </li>
-      {% endif %}
-      <li><b>Current Holder: </b>{{ title.current_holder }}</li>
-    </ul>
-  </div>
-</div>
-<p><a class="btn btn-primary" href="{% url 'title:edit' title.id %}">Edit</a></p>
-{% endblock content %}
+          </p>
+{% endif %}
+{% if title.current_holder %}<p><b>Current Holder:</b> {{ title.current_holder }}</p>{% endif %}
+{% endblock card-basic %}
+
+{% block card-buttons %}
+<a class="btn btn-primary align-self-end" href="{% url 'title:edit' title.id %}">Edit</a>
+{% endblock card-buttons %}

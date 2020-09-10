@@ -1,0 +1,28 @@
+{% extends 'political_formation/base.html' %}
+
+{% block political_formation_content %}
+
+{% block bform %}{% endblock bform %}
+
+<div class="card">
+  <div class="card-header">{% block card-header %}{% endblock card-header %}</div>
+
+  <div class="card-body">
+    <div class="container-fluid">
+      <div class="row px-4">
+        <div class="col">
+          {% block card-basic %}{% endblock card-basic %}
+        </div>
+      </div>
+    </div>
+    
+    <div id="button-container" class="text-right">
+      {% block card-buttons %}{% endblock card-buttons %}
+    </div>
+  </div>
+</div>
+
+{% block eform %}{% endblock eform %}
+
+{% endblock political_formation_content %}
+

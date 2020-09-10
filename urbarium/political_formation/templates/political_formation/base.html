@@ -1,0 +1,12 @@
+{% extends 'urbarium/base.html' %}
+
+{% block content %}
+
+<div id="top-button-container" class="mb-4">
+    <a class="btn btn-primary btn-block" href="{% url 'political_formation:new' %}">Create New Political Formation</a>
+</div>
+
+
+{% block political_formation_content %}{% endblock political_formation_content %}
+
+{% endblock content %}

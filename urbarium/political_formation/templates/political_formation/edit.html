@@ -1,0 +1,19 @@
+{% extends 'political_formation/card.html' %}
+
+{% block title %}Edit Political Formation | {% endblock title %}
+
+{% block bform %}<form method="post">{% csrf_token %}{% endblock bform %}
+
+    {% block card-header %}{{ form.name }}{% endblock card-header %}
+    
+    {% block card-basic %}
+    <p><b>Classification:</b> {{ form.classification }}</p>
+    <p><b>Government:</b> {{ form.government }}</p>
+    <p><b>Governing Body:</b> {{ form.governing_body }}</p>
+    {% endblock card-basic %}
+
+    {% block card-buttons %}
+    <div class="text-right"><input type="submit" value="Save" class="btn btn-primary"></div>
+    {% endblock card-buttons %}
+
+{% block eform %}</form>{% endblock eform %}

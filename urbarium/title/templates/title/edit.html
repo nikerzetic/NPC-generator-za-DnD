@@ -1,10 +1,19 @@
-{% extends 'urbarium/base.html' %}
+{% extends 'title/card.html' %}
 
 {% block title %}Edit Title | {% endblock title %}
 
-{% block content %}
-<form method="post">{% csrf_token %}
-    {{ form.name }}, {{ form.concerning }}, {{ form.holders }} {{ form.current_holder }}
-    <input type="submit" value="Save" class="btn btn-primary">
-</form>
-{% endblock content %}
+{% block bform %}<form method="post">{% csrf_token %}{% endblock bform %}
+
+    {% block card-header %}{{ form.name }}{% endblock card-header %}
+    
+    {% block card-basic %}
+    <p><b>Governing Body:</b> {{ form.concerning }}</p>
+    <p><b>Holders</b>: {{ form.holders }}</p>
+    <p><b>Current Holder:</b> {{ title.current_holder }}</p>
+    {% endblock card-basic %}
+
+    {% block card-buttons %}
+    <div class="text-right"><input type="submit" value="Save" class="btn btn-primary"></div>
+    {% endblock card-buttons %}
+
+{% block eform %}</form>{% endblock eform %}

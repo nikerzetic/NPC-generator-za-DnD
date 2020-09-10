@@ -27,8 +27,8 @@ urlpatterns = [
 
     path('character/', include('character.urls')),
     path('settlement/', include('settlement.urls')),
-    path('political-formation/', include('political_formation.urls')),
-    path('governing-body/', include('governing_body.urls')),
+    path('political_formation/', include('political_formation.urls')),
+    path('governing_body/', include('governing_body.urls')),
     path('title/', include('title.urls')),
     path('users/', include('users.urls')),
     

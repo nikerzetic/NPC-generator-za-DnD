@@ -1,6 +1,6 @@
-{% extends 'governing_body/card.html' %}
+{% extends 'political_formation/card.html' %}
 
-{% block title %}Edit Governing Body | {% endblock title %}
+{% block title %}New Political Formation | {% endblock title %}
 
 {% block bform %}<form method="post">{% csrf_token %}{% endblock bform %}
 
@@ -8,6 +8,8 @@
     
     {% block card-basic %}
     <p><b>Classification:</b> {{ form.classification }}</p>
+    <p><b>Government:</b> {{ form.government }}</p>
+    <p><b>Governing Body:</b> {{ form.governing_body }}</p>
     {% endblock card-basic %}
 
     {% block card-buttons %}

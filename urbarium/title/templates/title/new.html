@@ -1,13 +1,15 @@
-{% extends 'governing_body/card.html' %}
+{% extends 'title/card.html' %}
 
-{% block title %}Edit Governing Body | {% endblock title %}
+{% block title %}New Title | {% endblock title %}
 
 {% block bform %}<form method="post">{% csrf_token %}{% endblock bform %}
 
     {% block card-header %}{{ form.name }}{% endblock card-header %}
     
     {% block card-basic %}
-    <p><b>Classification:</b> {{ form.classification }}</p>
+    <p><b>Governing Body:</b> {{ form.concerning }}</p>
+    <p><b>Holders</b>: {{ form.holders }}</p>
+    <p><b>Current Holder:</b> {{ title.current_holder }}</p>
     {% endblock card-basic %}
 
     {% block card-buttons %}

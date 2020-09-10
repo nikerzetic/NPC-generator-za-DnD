@@ -16,7 +16,6 @@ class IndexView(generic.ListView):
 class DetailView(generic.DetailView):
     model = Character
     template_name = 'character/detail.html'
-    # ??? dodati se titles in conections na kraje
 
 
 class EditView(generic.UpdateView):

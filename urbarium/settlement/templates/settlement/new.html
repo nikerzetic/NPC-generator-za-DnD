@@ -1,10 +1,21 @@
-{% extends 'settlement/base.html' %}
+{% extends 'settlement/card.html' %}
 
-{% block title %}Edit Settlement | {% endblock title %}
+{% block title %}New Settlement | {% endblock title %}
 
-{% block settlement_content %}
-<form method="post">{% csrf_token %}
-    {{ form.name }}, population of {{ form.population }}, {{ form.category }}, {{ form.location }}, {{ form.economy }}, {{ form.knownfor }}
-    <input type="submit" value="Save" class="btn btn-primary">
-</form>
-{% endblock settlement_content %}
+{% block bform %}<form method="post">{% csrf_token %}{% endblock bform %}
+
+    {% block card-header %}{{ form.name }}{% endblock card-header %}
+    
+    {% block card-basic %}
+    <p><b>Population:</b> {{ form.population }}</p>
+    <p><b>Category:</b> {{ form.category }}</p>
+    <p><b>Location:</b> {{ form.location }}</p>
+    <p><b>Economy:</b> {{ form.economy }}</p>
+    <p><b>Known For:</b> {{ form.knownfor }}</p>
+    {% endblock card-basic %}
+
+    {% block card-buttons %}
+    <div class="text-right"><input type="submit" value="Save" class="btn btn-primary"></div>
+    {% endblock card-buttons %}
+
+{% block eform %}</form>{% endblock eform %}

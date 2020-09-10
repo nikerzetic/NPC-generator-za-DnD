@@ -23,8 +23,9 @@ class EditView(generic.UpdateView):
     fields = ['name', 'population', 'category',
              'location', 'knownfor', 'economy']
 
+
 class NewView(generic.CreateView):
     model = Settlement
     template_name = 'settlement/new.html'
-    fields = ['name', 'population', 'category',
-             'location', 'knownfor', 'economy']
+    fields = [
+        'name', 'population', 'category', 'location', 'knownfor', 'economy']
