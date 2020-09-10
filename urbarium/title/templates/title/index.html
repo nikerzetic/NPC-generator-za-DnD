@@ -14,7 +14,6 @@
                 <th scope="col"></th>
                 <th scope="col">Name</th>
                 <th scope="col">GoverningBody</th>
-                <th scope="col">Holders</th>
                 <th scope="col">Current Holder</th>
             </tr>
         </thead>
@@ -29,14 +28,7 @@
                     </svg></a></td>
                     <td>{{ title.name }}</td>
                     <td>{{ title.concerning }}</td>
-                    <td>
-                        <div style="height:60px;width:240px;border:1px solid #ccc;overflow:auto;">
-                                {% for holder in title.holders.all %}
-                                <ul style="line-height:90%">{{ holder }}</ul>
-                                {% endfor %}
-                        </div>
-                    </td>
-                    <td>{{ title.current_holder }}</td>
+                    <td>{{ title.holder }}</td>
                 </tr>
                 {% endfor %}
             {% else %}
@@ -50,8 +42,7 @@
                             </svg></a></td>
                             <td>{{ title.name }}</td>
                             <td>{{ title.concerning }}</td>
-                            <td>{{ title.holders }}</td>
-                            <td>{{ title.current_holder }}</td>
+                            <td>{{ title.holder }}</td>
                         </tr>
                     {% endif %}
                 {% endfor %}

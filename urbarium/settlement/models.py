@@ -1,6 +1,8 @@
 from django.db import models
 from django.urls import reverse
 
+from political_formation.models import PoliticalFormation
+
 
 class SettlementType(models.Model):
     name = models.CharField(max_length=20)
@@ -40,6 +42,7 @@ class Settlement(models.Model):
     economy = models.ForeignKey(Economy, blank=True, null=True, on_delete=models.SET_NULL)
     knownfor = models.ForeignKey(KnownFor, blank=True, null=True, on_delete=models.SET_NULL)
     public = models.BooleanField(default=False)
+    partof = models.ForeignKey(PoliticalFormation, blank=True, null=True, on_delete=models.SET_NULL)
 
     def __str__(self):
         return self.name

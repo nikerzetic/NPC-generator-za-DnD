@@ -8,9 +8,11 @@ from django.urls import reverse
 class Title(models.Model):
     name = models.CharField(max_length=100)
     concerning = models.ForeignKey(GoverningBody, blank=True, null=True, on_delete=models.SET_NULL)
-    holders = models.ManyToManyField(Character)
-    current_holder = models.ForeignKey(Character, blank=True, null=True, on_delete=models.SET_NULL, related_name='current_holder')
+    holder = models.ForeignKey(Character, blank=True, null=True, on_delete=models.SET_NULL)
     public = models.BooleanField(default=False)
+
+    class Meta:
+        ordering = ['name']
 
     def __str__(self):
         return self.name
